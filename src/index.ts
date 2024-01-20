@@ -2,7 +2,7 @@ import type { BuildIcons, IconOutput } from "@carbon/pictograms";
 import metadata from "@carbon/pictograms/metadata.json";
 import fs from "node:fs";
 import path from "node:path";
-import { ensureFolder, toModuleName } from "./utils";
+import { ensureFolder } from "./utils";
 
 interface Options {
   /**
@@ -29,22 +29,31 @@ export const genCarbonPictogramsReactTypes = (options?: Options) => {
   let other_files_es = "lib/index.d.ts\n";
   let pictograms_index = "";
 
+  const buildIcons = metadata as BuildIcons;
   const module_names: Array<IconOutput["moduleName"]> = [];
+  const icons_by_name: Record<string, BuildIcons["icons"][number]> =
+    buildIcons.icons.reduce(
+      (arr, current) => ({ ...arr, [current.name]: current }),
+      {}
+    );
   const deprecated_pictograms = new Map<
     IconOutput["moduleName"],
     { deprecatedTag: string }
   >();
 
-  (metadata as BuildIcons).icons.slice(0, limit).forEach((icon) => {
+  buildIcons.icons.slice(0, limit).forEach((icon) => {
     if (icon.deprecated) {
       let reason = icon.reason;
 
       if (/replaced by/.test(reason)) {
         const replacee = reason.split("replaced by").pop()?.trim() ?? "";
-        reason = reason.replace(replacee, "`" + toModuleName(replacee) + "`");
+        const replacee_module_name =
+          icons_by_name[replacee].output[0].moduleName;
+
+        reason = reason.replace(replacee, `\`${replacee_module_name}\``);
       }
 
-      deprecated_pictograms.set(toModuleName(icon.name), {
+      deprecated_pictograms.set(icon.output[0].moduleName, {
         deprecatedTag: `/**
  * @deprecated
  * ${reason}
