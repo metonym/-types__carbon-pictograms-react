@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "scripts": {
+    "generate-types": "bun test",
+    "postgenerate-types": "dprint fmt dist/*.d.ts"
+  },
+  "devDependencies": {
+    "@carbon/pictograms": "12.30.0",
+    "@types/bun": "latest",
+    "@types/react": "latest",
+    "dprint": "latest"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "incremental": false,
+  "typescript": {
+    "indentWidth": 4,
+    "lineWidth": 120
+  },
+  "excludes": ["**/node_modules", "src/**"],
+  "plugins": ["https://plugins.dprint.dev/typescript-0.88.8.wasm"]
+}
