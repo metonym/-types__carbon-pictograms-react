@@ -25,8 +25,6 @@ export const genCarbonPictogramsReactTypes = (options?: Options) => {
 
   ensureFolder(output_dir);
 
-  let other_files_lib = "es/index.d.ts\n";
-  let other_files_es = "lib/index.d.ts\n";
   let pictograms_index = "";
 
   const buildIcons = metadata as BuildIcons;
@@ -75,7 +73,6 @@ export const genCarbonPictogramsReactTypes = (options?: Options) => {
       module_names.push(moduleName);
 
       pictograms_index += `export { ${moduleName} } from "../";\n`;
-      other_files_lib += `es/${tsFolder}${tsFile}\n`;
 
       ensureFolder(path.join(output_dir, "es", tsFolder));
 
@@ -84,7 +81,6 @@ export const genCarbonPictogramsReactTypes = (options?: Options) => {
         `export { ${moduleName} as default } from "${relativePath}";\n`
       );
 
-      other_files_es += `lib/${tsFolder}${tsFile}\n`;
       ensureFolder(path.join(output_dir, "lib", tsFolder));
 
       const libFile = `import { ${moduleName} } from "${relativePath}";
