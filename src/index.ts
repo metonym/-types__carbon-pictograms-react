@@ -1,8 +1,7 @@
 import type { BuildIcons, IconOutput } from "@carbon/pictograms";
 import metadata from "@carbon/pictograms/metadata.json";
-import fs from "node:fs";
+import { $ } from "bun";
 import path from "node:path";
-import { ensureFolder } from "./utils";
 
 interface Options {
   /**
@@ -19,11 +18,11 @@ interface Options {
   outputDir?: string;
 }
 
-export const genCarbonPictogramsReactTypes = (options?: Options) => {
+export const genCarbonPictogramsReactTypes = async (options?: Options) => {
   const limit = options?.limit ?? Infinity;
   const output_dir = options?.outputDir ?? "dist";
 
-  ensureFolder(output_dir);
+  await $`rm -rf ${output_dir} && mkdir ${output_dir}`;
 
   let pictograms_index = "";
 
@@ -59,7 +58,7 @@ export const genCarbonPictogramsReactTypes = (options?: Options) => {
       });
     }
 
-    icon.output.forEach((output) => {
+    icon.output.forEach(async (output) => {
       const { moduleName, filepath } = output;
       const folder = filepath.split("/");
       const file = folder.pop() ?? "";
@@ -74,26 +73,26 @@ export const genCarbonPictogramsReactTypes = (options?: Options) => {
 
       pictograms_index += `export { ${moduleName} } from "../";\n`;
 
-      ensureFolder(path.join(output_dir, "es", tsFolder));
+      await $`mkdir -p ${output_dir}/es/${tsFolder}`;
 
-      fs.writeFileSync(
+      await Bun.write(
         path.join(output_dir, "es", tsFolder, tsFile),
         `export { ${moduleName} as default } from "${relativePath}";\n`
       );
 
-      ensureFolder(path.join(output_dir, "lib", tsFolder));
+      await $`mkdir -p ${output_dir}/lib/${tsFolder}`;
 
       const libFile = `import { ${moduleName} } from "${relativePath}";
 
 export = ${moduleName};\n`;
 
-      fs.writeFileSync(path.join(output_dir, "lib", tsFolder, tsFile), libFile);
+      await Bun.write(path.join(output_dir, "lib", tsFolder, tsFile), libFile);
     });
   });
 
-  fs.writeFileSync(path.join(output_dir, "es/index.d.ts"), pictograms_index);
-  fs.writeFileSync(path.join(output_dir, "lib/index.d.ts"), pictograms_index);
-  fs.writeFileSync(
+  await Bun.write(path.join(output_dir, "es/index.d.ts"), pictograms_index);
+  await Bun.write(path.join(output_dir, "lib/index.d.ts"), pictograms_index);
+  await Bun.write(
     path.join(output_dir, "index.d.ts"),
     `/** ${module_names.length} pictograms in total */
 
