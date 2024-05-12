@@ -3,5 +3,5 @@ import { genCarbonPictogramsReactTypes } from "../src";
 
 test("genCarbonPictogramsReactTypes", async () => {
   const result = await genCarbonPictogramsReactTypes();
-  expect(result.total).toEqual(1173);
+  expect(result.total).toEqual(1183);
 });
