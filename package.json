@@ -8,6 +8,6 @@
     "@carbon/pictograms": "12.36.0",
     "@types/bun": "latest",
     "@types/react": "latest",
-    "dprint": "latest"
+    "dprint": "0.45.1"
   }
 }
