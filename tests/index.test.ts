@@ -1,7 +1,7 @@
 import { expect, test } from "bun:test";
-import { genCarbonPictogramsReactTypes } from "../src";
+import { genTypes } from "../src";
 
-test("genCarbonPictogramsReactTypes", async () => {
-  const result = await genCarbonPictogramsReactTypes();
+test("genTypes", async () => {
+  const result = await genTypes();
   expect(result.total).toEqual(1183);
 });

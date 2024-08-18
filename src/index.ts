@@ -3,7 +3,7 @@ import metadata from "@carbon/pictograms/metadata.json";
 import { $ } from "bun";
 import path from "node:path";
 
-interface Options {
+type Options = {
   /**
    * Specify a max number of icons to generate.
    * Useful for testing without generating all icons (2k+).
@@ -18,7 +18,7 @@ interface Options {
   outputDir?: string;
 }
 
-export const genCarbonPictogramsReactTypes = async (options?: Options) => {
+export const genTypes = async (options?: Options) => {
   const limit = options?.limit ?? Infinity;
   const output_dir = options?.outputDir ?? "dist";
 
