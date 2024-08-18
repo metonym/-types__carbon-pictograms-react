@@ -1,14 +1,33 @@
 # @types\_\_carbon-pictograms-react
 
-This repo generates TypeScript definitions ([@types/carbon\_\_pictograms-react](https://www.npmjs.com/package/@types/carbon__pictograms-react)) for the [@carbon/pictograms-react](https://github.com/carbon-design-system/carbon/tree/main/packages/pictograms-react) pictogram library using the [@carbon/pictograms](https://www.npmjs.com/package/@carbon/pictograms) package.
+This repository generates TypeScript definitions ([@types/carbon\_\_pictograms-react](https://www.npmjs.com/package/@types/carbon__pictograms-react)) for the [@carbon/pictograms-react](https://github.com/carbon-design-system/carbon/tree/main/packages/pictograms-react) pictogram library using the [@carbon/pictograms](https://www.npmjs.com/package/@carbon/pictograms) package.
 
 ## Prerequisites
 
-This repo uses `bun`. See the docs for [installation instructions](https://bun.sh/docs/installation).
+- [Bun](https://bun.sh/docs/installation)
+
+## Set-up
+
+Install the dependencies:
+
+```sh
+bun install
+```
 
 ## Runbook
 
 1. Manually upgrade the minor version of `@carbon/pictograms`.
+
+This should be done manually in the `package.json` file. Note that the version should be pinned.
+
+```json
+{
+  "dependencies": {
+    "@carbon/pictograms": "<version>"
+  }
+}
+```
+
 2. Run `bun generate-types`.
 
 - This will generate the source code in `dist/`.
