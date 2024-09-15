@@ -16,9 +16,12 @@ bun install
 
 ## Runbook
 
-1. Manually upgrade the minor version of `@carbon/pictograms`.
+### 1. Upgrade the minor version of `@carbon/pictograms`.
 
-This should be done manually in the `package.json` file. Note that the version should be pinned.
+Manually upgrade the `@carbon/pictograms` version in the `package.json`.
+
+> [!NOTE]  
+> The `@carbon/pictograms` version should be pinned.
 
 ```json
 {
@@ -28,7 +31,7 @@ This should be done manually in the `package.json` file. Note that the version s
 }
 ```
 
-2. Run `bun generate-types`.
+### 2. Run `bun generate-types`.
 
 - This will generate the source code in `dist/`.
 - If there are changes, the `tests/index.test.ts` should expectedly fail. Fix the broken test and commit the changes.
