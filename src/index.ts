@@ -28,11 +28,16 @@ export const genTypes = async (options?: Options) => {
 
   const buildIcons = metadata as BuildIcons;
   const module_names: Array<IconOutput["moduleName"]> = [];
-  const icons_by_name: Record<string, BuildIcons["icons"][number]> =
-    buildIcons.icons.reduce(
-      (arr, current) => ({ ...arr, [current.name]: current }),
-      {}
-    );
+
+  type IconsByName = Record<string, BuildIcons["icons"][number]>;
+
+  const icons_by_name: IconsByName = buildIcons.icons.reduce(
+    (arr: IconsByName, current) => {
+        arr[current.name] = current;
+        return arr;
+      },
+    {}
+  );
   const deprecated_pictograms = new Map<
     IconOutput["moduleName"],
     { deprecatedTag: string }
