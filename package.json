@@ -5,7 +5,7 @@
     "postgenerate-types": "dprint fmt dist/*.d.ts"
   },
   "devDependencies": {
-    "@carbon/pictograms": "12.49.0",
+    "@carbon/pictograms": "12.50.0",
     "@types/bun": "latest",
     "@types/react": "latest",
     "dprint": "0.45.1"
