@@ -3,7 +3,7 @@
   "workspaces": {
     "": {
       "devDependencies": {
-        "@carbon/pictograms": "12.52.0",
+        "@carbon/pictograms": "12.55.0",
         "@types/bun": "latest",
         "@types/react": "latest",
         "dprint": "0.45.1",
@@ -11,7 +11,7 @@
     },
   },
   "packages": {
-    "@carbon/pictograms": ["@carbon/pictograms@12.52.0", "", { "dependencies": { "@ibm/telemetry-js": "^1.5.0" } }, "sha512-Py9SyRu2os88+wZaMvCS5RnL7KqbJaVlmEkF8WwTzghWeHA3lgKg4q8yfVHHLzA81yv84Fqywe+e9LGPkvclvQ=="],
+    "@carbon/pictograms": ["@carbon/pictograms@12.55.0", "", { "dependencies": { "@ibm/telemetry-js": "^1.5.0" } }, "sha512-uuH5VrRqPPeQXlXap/EkD9iOdWKRdFbxasj1U7Tkof8jREtvxR8lp2B9SvMqCejplZtlkaoTFdAO0N7uKztVIA=="],
 
     "@dprint/darwin-arm64": ["@dprint/darwin-arm64@0.45.1", "", { "os": "darwin", "cpu": "arm64" }, "sha512-pH0/uKLJ5SJPoHhOwLWFMhCmL0BY3FzWQbull8OGMK/FRkIPgOl2adZSovtUZpUMGWyDOzIWH1fW9X2DuMhnEg=="],
 
