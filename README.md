@@ -1,5 +1,8 @@
 # @types\_\_carbon-pictograms-react
 
+> **Warning**
+> As of v11.89.x, the `@carbon/pictograms-react` package ships its own TypeScript definitions. As such, `@types/carbon__pictograms-react` is no longer needed and [has been removed](https://github.com/DefinitelyTyped/DefinitelyTyped/pull/73936). This repo is archived and will remain public for historical purposes.
+
 This repository generates TypeScript definitions ([@types/carbon\_\_pictograms-react](https://www.npmjs.com/package/@types/carbon__pictograms-react)) for the [@carbon/pictograms-react](https://github.com/carbon-design-system/carbon/tree/main/packages/pictograms-react) pictogram library using the [@carbon/pictograms](https://www.npmjs.com/package/@carbon/pictograms) package.
 
 ## Prerequisites
